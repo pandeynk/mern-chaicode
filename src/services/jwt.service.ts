@@ -11,7 +11,7 @@ export const generateToken = (payload: object): string => {
 
 export const verifyToken = (token: string): object | null => {
   try {
-    const decoded = jwt.verify(token, secret);
+    const decoded = jwt.verify(token, secret ?? process.env.JWT_SECRET);
     return typeof decoded === "object" && decoded !== null ? decoded : null;
   } catch {
     return null;

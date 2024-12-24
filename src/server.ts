@@ -4,18 +4,20 @@ import mongoose from "mongoose";
 import authRoutes from "./routes/auth.routes";
 import { rateLimiter } from "./middlewares/rateLimiter.middleware";
 import logger from "./utils/logger.util";
+import { authenticate } from "./middlewares/auth.middleware";
 
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT ?? 3000;
 
 // Middleware
 app.use(express.json());
 app.use(rateLimiter);
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello, World!");
+// Authenticate and Protect the Root Endpoint
+app.get("/", authenticate, (req: Request, res: Response) => {
+  res.send("Hello, authenticated user!");
 });
 
 // Routes
