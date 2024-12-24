@@ -5,10 +5,6 @@ import authRoutes from "./routes/auth.routes";
 
 dotenv.config();
 
-console.log(
-  "process.env.JWT_SECRET : " + JSON.stringify(process.env.JWT_SECRET)
-);
-
 const app = express();
 const port = process.env.PORT || 3000;
 
