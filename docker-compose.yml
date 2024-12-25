@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"  # Match the PORT in .env
+    env_file:
+      - .env         # Load environment variables from your .env file
+    depends_on:
+      - mongo
+      - redis        # Add Redis dependency
+    restart: always  # Ensure the app restarts on failure
+
+  mongo:
+    image: mongo:4.4
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: adminpass
+    ports:
+      - "27017:27017"  # Expose MongoDB on the same port as in DB_URL
+    volumes:
+      - mongo-data:/data/db
+    restart: always
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"  # Expose Redis port
+    restart: always
+    environment:
+      REDIS_PASSWORD: "" # Optional, add password if required
+      ALLOW_EMPTY_PASSWORD: "yes"
+
+volumes:
+  mongo-data:
