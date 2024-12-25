@@ -17,6 +17,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: adminpass
+      MONGO_INITDB_DATABASE: mydatabase 
     ports:
       - "27017:27017"  # Expose MongoDB on the same port as in DB_URL
     volumes:
@@ -30,7 +31,7 @@ services:
       - "6379:6379"  # Expose Redis port
     restart: always
     environment:
-      REDIS_PASSWORD: "" # Optional, add password if required
+      REDIS_PASSWORD: ""
       ALLOW_EMPTY_PASSWORD: "yes"
 
 volumes:

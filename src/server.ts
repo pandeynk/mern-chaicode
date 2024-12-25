@@ -1,17 +1,17 @@
 import express from "express";
 import dotenv from "dotenv";
-import mongoose from "mongoose";
 import authRoutes from "./routes/auth.routes";
 import healthRoutes from "./routes/health.routes";
 import { generalRateLimiter } from "./middlewares/rateLimiter.middleware";
 import logger from "./utils/logger.util";
 import { errorHandler } from "./middlewares/errorHandler.middleware";
 import cacheMiddleware from "./middlewares/cache.middleware";
+import connectToDatabase from "./utils/db.util";
 
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT ?? 8080;
 
 // Middleware
 app.use(express.json());
@@ -36,13 +36,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to the Production-Ready API");
 });
 
-// Connect to MongoDB
-mongoose
-  .connect(process.env.DB_URL!)
-  .then(() => logger.info("Connected to MongoDB"))
-  .catch((error) =>
-    logger.error(`Database connection failed: ${error.message}`)
-  );
+connectToDatabase();
 
 // Centralized Error Handler
 app.use(errorHandler);
