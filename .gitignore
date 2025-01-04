@@ -2,6 +2,6 @@ node_modules/
 dist/
 .env
 package-lock.json
-logs/
+logs/*
 .npmrc
 coverage/

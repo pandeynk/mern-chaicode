@@ -1,6 +1,10 @@
+version: "3.8"
 services:
   app:
-    build: .
+    build:
+      context: .
+      args:
+        DEV: ${DEV:-false} # Pass DEV environment variable (default: false)
     ports:
       - "8080:8080"
     env_file:
