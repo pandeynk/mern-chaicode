@@ -1,17 +1,27 @@
 import Redis from "ioredis";
+import { cacheConfig } from "../configs/cache";
 
-const redis = new Redis({
-  host: process.env.REDIS_HOST ?? "localhost", // Default to localhost if REDIS_HOST is not defined
-  port: Number(process.env.REDIS_PORT) || 6379,
-  password: process.env.REDIS_PASSWORD ?? undefined, // Use password if set
-});
+// Singleton Redis client instance
+let redis: Redis | null = null;
 
-redis.on("connect", () => {
-  console.log("Connected to Redis");
-});
+export const getRedisClient = (): Redis => {
+  if (!redis) {
+    redis = new Redis({
+      host: cacheConfig.host ?? "localhost", // Default to localhost if not specified
+      port: Number(cacheConfig.port) || 6379, // Default Redis port
+      password: cacheConfig.password ?? undefined, // Use password if specified
+    });
 
-redis.on("error", (err) => {
-  console.error("Redis error:", err);
-});
+    redis.on("connect", () => {
+      console.log("[Redis] Connected to Redis successfully");
+    });
 
-export default redis;
+    redis.on("error", (err) => {
+      console.error("[Redis] Connection error:", err.message);
+    });
+  }
+  return redis;
+};
+
+// Default export
+export default getRedisClient;

@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { AppDataSource } from "../ormconfig";
 import { User } from "../entities/user.entity";
 import { hashPassword, comparePassword } from "../utils/bcrypt.util";
-import { generateToken } from "../services/jwt.service";
+import { generateToken } from "../services";
 import logger from "../utils/logger.util";
 import {
   registerValidation,

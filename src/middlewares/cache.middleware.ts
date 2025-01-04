@@ -1,5 +1,8 @@
 import { Request, Response, NextFunction } from "express";
-import redis from "../utils/redis.util";
+
+import getRedisClient from "../utils/redis.util";
+
+const redis = getRedisClient();
 
 const cacheMiddleware = async (
   req: Request,

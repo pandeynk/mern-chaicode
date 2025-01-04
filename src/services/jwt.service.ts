@@ -1,17 +1,18 @@
 import jwt from "jsonwebtoken";
+import { appConfig } from "../configs/app";
 
-const secret = process.env.JWT_SECRET!;
-const expiry = process.env.JWT_EXPIRY ?? "1h";
+const secret = appConfig.jwtSecret!;
+const expiry = appConfig.jwtExpiry;
 
 export const generateToken = (payload: object): string => {
-  return jwt.sign(payload, secret ?? process.env.JWT_SECRET, {
+  return jwt.sign(payload, secret, {
     expiresIn: expiry,
   });
 };
 
 export const verifyToken = (token: string): object | null => {
   try {
-    const decoded = jwt.verify(token, secret ?? process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, secret);
     return typeof decoded === "object" && decoded !== null ? decoded : null;
   } catch {
     return null;

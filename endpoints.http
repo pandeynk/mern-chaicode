@@ -1,9 +1,15 @@
 ################################
 GET http://localhost:8080
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzM2MDE4MTQxLCJleHAiOjE3MzYwMjE3NDF9.MkkBqWopJgiMNZooNClNhhmtcFn29czLlQlZJAGTQxw
+
+################################
+GET http://localhost:8080/api/protected
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzM2MDIyMTc4LCJleHAiOjE3MzYwMjU3Nzh9.82jbLwZJdS1Wfn29x-yLchJczHqQz1QgqhJWQuj7KKs
 
 ################################
 GET http://localhost:8080/api/data
+
+################################
+GET http://localhost:8080/api/health
 
 ################################
 POST http://localhost:8080/api/auth/register
