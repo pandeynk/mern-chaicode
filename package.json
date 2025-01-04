@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node dist/server.js",
     "build": "tsc",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "migration:run": "npx typeorm migration:run -d ./src/ormconfig.ts",
+    "migration:run:dist": "npx typeorm migration:run -d ./dist/ormconfig.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -18,6 +20,9 @@
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.2",
+    "mysql2": "^3.12.0",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.20",
     "winston": "^3.17.0"
   },
   "devDependencies": {

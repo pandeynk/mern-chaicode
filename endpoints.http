@@ -1,6 +1,6 @@
 ################################
 GET http://localhost:8080
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NmFkMTFlOGZjZGU5ZDVhNjQ0MDEzOSIsImVtYWlsIjoidGVzdEBleGFtcGxlLmNvbSIsImlhdCI6MTczNTA1MzY0NiwiZXhwIjoxNzM1MDU3MjQ2fQ.CSsNYtBZ7MmzX9lwmAr9q26nCYm3xPIq_AugrgbHzf8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzM2MDE4MTQxLCJleHAiOjE3MzYwMjE3NDF9.MkkBqWopJgiMNZooNClNhhmtcFn29czLlQlZJAGTQxw
 
 ################################
 GET http://localhost:8080/api/data

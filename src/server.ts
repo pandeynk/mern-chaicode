@@ -6,7 +6,7 @@ import { generalRateLimiter } from "./middlewares/rateLimiter.middleware";
 import logger from "./utils/logger.util";
 import { errorHandler } from "./middlewares/errorHandler.middleware";
 import cacheMiddleware from "./middlewares/cache.middleware";
-import connectToDatabase from "./utils/db.util";
+import { initializeDatabase } from "./utils/db.util";
 
 dotenv.config();
 
@@ -36,7 +36,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to the Production-Ready API");
 });
 
-connectToDatabase();
+initializeDatabase();
 
 // Centralized Error Handler
 app.use(errorHandler);
