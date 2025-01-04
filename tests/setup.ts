@@ -1,4 +1,3 @@
-import { AppDataSource } from "../src/ormconfig";
 import Redis from "ioredis-mock";
 
 // Mock the database repository
