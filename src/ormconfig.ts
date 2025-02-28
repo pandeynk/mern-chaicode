@@ -1,3 +1,4 @@
+// src/ormconfig.ts
 import { DataSource } from "typeorm";
 
 // Migrations
@@ -20,4 +21,13 @@ export const AppDataSource = new DataSource({
     process.env.NODE_ENV === "production" ? ["error"] : ["query", "error"],
   migrations: [CreateUsersTable1735138375286],
   entities: [User],
-});
+  // Connection pool configuration
+  extra: {
+    // Maximum number of connections in the pool
+    connectionLimit: Number(dbConfig.connectionLimit) || 10,
+    // Maximum time (ms) that a connection can be idle before being released
+    queueLimit: 0,
+    // Connection timeout in milliseconds
+    connectTimeout: 60000,
+    // The maximum time (ms) a connection can be idle before being released
+    idleTimeout:

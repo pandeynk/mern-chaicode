@@ -6,6 +6,7 @@ import cacheMiddleware from "./middlewares/cache.middleware";
 import { initializeDatabase } from "./utils/db.util";
 import { appConfig } from "./configs/app";
 import { protectedRoutes, authRoutes, healthRoutes } from "./routes";
+import { setupSwagger } from "./utils/swagger.util";
 
 // Create the Express app
 const app = express();
@@ -14,6 +15,8 @@ const port = appConfig.port;
 // Middleware
 app.use(express.json());
 app.use(generalRateLimiter);
+
+setupSwagger(app);
 
 // Cache Middleware Example
 app.get("/api/data", cacheMiddleware, async (req, res) => {

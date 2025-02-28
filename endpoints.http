@@ -3,7 +3,7 @@ GET http://localhost:8080
 
 ################################
 GET http://localhost:8080/api/protected
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzM2MDIyMTc4LCJleHAiOjE3MzYwMjU3Nzh9.82jbLwZJdS1Wfn29x-yLchJczHqQz1QgqhJWQuj7KKs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzM2MTY3MzgxLCJleHAiOjE3MzYxNzA5ODF9.qrcAC7I1IpW5M_nOqUl6GjepHnSemXh5Xst9ujo2c94
 
 ################################
 GET http://localhost:8080/api/data
